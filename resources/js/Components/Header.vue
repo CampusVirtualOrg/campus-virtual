@@ -1,9 +1,13 @@
+<script setup>
+import { Link } from '@inertiajs/vue3';
+</script>
+
 <template>
      <div class="header-section">
 
         <div class="perfil">
-          <img src="#" alt="" class="img-perfil" />
-          <p>Olá, <span style="color: #3065ac; font-weight: 500;">Nome</span></p>
+            <img src="assets/users/caio.png" alt="" class="img-perfil  mx-2" />
+            <p>Olá,<span style="color: #3065ac; font-weight: 500;" class="mx-3">Nome</span></p>
         </div>
 
         <div class="box">
@@ -39,7 +43,7 @@
 }
 
 .perfil img {
-  width: 4rem;
+  width: 3rem;
   border-radius: 50%;
   background-color: #3065ac;
 }

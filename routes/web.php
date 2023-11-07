@@ -47,8 +47,28 @@ Route::get('/admin', function(){
 
 Route::get('/aluno', function(){
     return Inertia::render('Dashboard-aluno');
-})->name('aluno');
+})->name('alunos');
 
 Route::get('/prof', function(){
     return Inertia::render('Dashboard-professor');
 })->name('professor');
+
+Route::get('/requerimentos', function(){
+    return Inertia::render('Dashboard-professor');
+})->name('requerimentos');
+
+Route::get('/turmas', function(){
+    return Inertia::render('Dashboard-professor');
+})->name('turmas');
+
+Route::get('/disciplinas', function(){
+    return Inertia::render('Dashboard-professor');
+})->name('disciplinas');
+
+Route::get('/cursos', function(){
+    return Inertia::render('Dashboard-professor');
+})->name('cursos');
+
+
+
+

@@ -53,9 +53,7 @@ return new class extends Migration
             ]);
             $table->string('observacoes');
             $table->enum('status', ['Aceito', 'Pendente', 'Recusado']);
-            $table->integer('usuario_id');
-            // $table->unsignedBigInteger('usuario_id');
-            // $table->foreign('usuario_id')->references('id')->on('usuarios')->cascadeOnDelete();
+            $table->integer('users_id');
         });
     }
 

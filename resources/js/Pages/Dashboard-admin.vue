@@ -8,9 +8,9 @@ import Header from '@/Components/Header.vue';
 
 
 <template>
-    <main class="mainAdmin">
+    <Head title="Paniel Administrador" />
 
-        <Head title="Paniel Administrador" />
+    <main class="mainAdmin">
             <div class="aside">
                 <Aside />
             </div>

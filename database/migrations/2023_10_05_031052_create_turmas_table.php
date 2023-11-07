@@ -16,12 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('semestre');
             $table->string('turno');
-            // $table->unsignedBigInteger('disciplina_id');
-            $table->unsignedBigInteger('professor_id');
             $table->timestamps();
-
-            // $table->foreign('disciplina_id')->references('id')->on('disciplinas')->cascadeOnDelete();
-            $table->foreign('professor_id')->references('id')->on('usuarios')->cascadeOnDelete();
         });
     }
 
