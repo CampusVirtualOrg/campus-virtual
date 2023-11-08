@@ -360,8 +360,8 @@ class ComposerStaticInit4f88f08fcfec47615c7ab24504d8e43d
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -541,6 +541,7 @@ class ComposerStaticInit4f88f08fcfec47615c7ab24504d8e43d
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
         'App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/EmailVerificationNotificationController.php',
@@ -551,7 +552,11 @@ class ComposerStaticInit4f88f08fcfec47615c7ab24504d8e43d
         'App\\Http\\Controllers\\Auth\\RegisteredUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisteredUserController.php',
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\CursosController' => __DIR__ . '/../..' . '/app/Http/Controllers/CursosController.php',
+        'App\\Http\\Controllers\\DisciplinasController' => __DIR__ . '/../..' . '/app/Http/Controllers/DisciplinasController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
+        'App\\Http\\Controllers\\RequerimentosController' => __DIR__ . '/../..' . '/app/Http/Controllers/RequerimentosController.php',
+        'App\\Http\\Controllers\\TurmaController' => __DIR__ . '/../..' . '/app/Http/Controllers/TurmaController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -565,7 +570,15 @@ class ComposerStaticInit4f88f08fcfec47615c7ab24504d8e43d
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
+        'App\\Models\\Curso' => __DIR__ . '/../..' . '/app/Models/Curso.php',
+        'App\\Models\\Curso_disciplina' => __DIR__ . '/../..' . '/app/Models/Curso_disciplina.php',
+        'App\\Models\\Disciplina' => __DIR__ . '/../..' . '/app/Models/Disciplina.php',
+        'App\\Models\\Disciplina_turmas' => __DIR__ . '/../..' . '/app/Models/Disciplina_turmas.php',
+        'App\\Models\\Matricula' => __DIR__ . '/../..' . '/app/Models/Matricula.php',
+        'App\\Models\\Requerimento' => __DIR__ . '/../..' . '/app/Models/Requerimento.php',
+        'App\\Models\\Turma' => __DIR__ . '/../..' . '/app/Models/Turma.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\Usuario_turmas' => __DIR__ . '/../..' . '/app/Models/Usuario_turmas.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
