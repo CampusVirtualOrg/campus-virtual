@@ -102,7 +102,7 @@ const submit = () => {
                 <select id="sexo" class="mt-1 block w-full" v-model="form.sexo" required>
                     <option value="Feminino">Feminino</option>
                     <option value="Masculino">Masculino</option>
-                    <option value="Outros">Outros</option>
+                    <option value="Outro">Outro</option>
                 </select>
 
                 <InputError class="mt-2" :message="form.errors.email" />

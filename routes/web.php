@@ -22,6 +22,7 @@ Route::get('/welcome', function () {
     ]);
 });
 
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -32,42 +33,75 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
-//---------------- ROTAS PARA ORGANIZAR ----------------//
+//---------------- ROTAS MANUAIS  ----------------//
 
-Route::get('/', function(){
+// Landing Page
+
+Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('welcome');
 
-Route::get('/admin', function(){
-    return Inertia::render('Dashboard-admin');
-})->name('admin');
 
-Route::get('/aluno', function(){
-    return Inertia::render('Dashboard-aluno');
-})->name('alunos');
+//--- ROTAS DO ADMINISTRADOR ---//
 
-Route::get('/prof', function(){
-    return Inertia::render('Dashboard-professor');
-})->name('professor');
+Route::middleware(['auth', 'administrador'])->group(function () {
+    // Home
+    Route::get('/admin', function () {
+        return Inertia::render('DashboardAdmin');
+    })->name('admin');
 
-Route::get('/requerimentos', function(){
-    return Inertia::render('Dashboard-professor');
-})->name('requerimentos');
+    // Usuarios
+    
+    Route::get('/usuarios', function () {
+        return Inertia::render('DashboardUsuarios');
+    })->name('usuarios');
+    
+    // Requerimentos
+    
+    Route::get('/requerimentos', function () {
+        return Inertia::render('DashboardRequerimentos');
+    })->name('requerimentos');
+    
+    // Turmas
+    
+    Route::get('/turmas', function () {
+        return Inertia::render('DashboardTurmas');
+    })->name('turmas');
+    
+    // Disciplinas
+    
+    Route::get('/disciplinas', function () {
+        return Inertia::render('DashboardDisciplinas');
+    })->name('disciplinas');
+    
+    // Cursos
+    
+    Route::get('/cursos', function () {
+        return Inertia::render('DashboardCursos');
+    })->name('cursos');
+    
+});
 
-Route::get('/turmas', function(){
-    return Inertia::render('Dashboard-professor');
-})->name('turmas');
+//--- ROTAS DO ALUNO ---//
 
-Route::get('/disciplinas', function(){
-    return Inertia::render('Dashboard-professor');
-})->name('disciplinas');
+Route::middleware(['auth', 'aluno'])->group(function () {
+    Route::get('/aluno', function () {
+        return Inertia::render('HomeAluno');
+    })->name('homeAluno');
+});
 
-Route::get('/cursos', function(){
-    return Inertia::render('Dashboard-professor');
-})->name('cursos');
+//--- ROTAS DO PROFESSOR ---//
+
+Route::middleware(['auth', 'professor'])->group(function () {
+    Route::get('/professor', function () {
+        return Inertia::render('HomeProfessor');
+    })->name('homeProfessor');
+});
+
+
 
 
 

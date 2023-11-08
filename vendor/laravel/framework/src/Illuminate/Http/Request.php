@@ -560,6 +560,7 @@ class Request extends SymfonyRequest implements Arrayable, ArrayAccess
         }
 
         return $this->session;
+        dd();
     }
 
     /**

@@ -20,7 +20,8 @@ import { Link } from '@inertiajs/vue3';
         <div class="buttons">
             <i class="bi bi-bell-fill"></i>
             <i class="bi bi-caret-down-square-fill"></i>
-            <a href="/login"><i class="bi bi-door-open-fill"></i></a>
+            <Link :href="route('logout')" method="post" as="button">
+              <i class="bi bi-door-open-fill"></i></Link>
         </div>
     </div>
 </template>
