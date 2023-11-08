@@ -49,7 +49,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'administrador'])->group(function () {
     // Home
-    Route::get('/admin', function () {
+    Route::get('/adm', function () {
         return Inertia::render('DashboardAdmin');
     })->name('admin');
 
