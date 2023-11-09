@@ -18,9 +18,9 @@ class Adm
     public function handle(Request $request, Closure $next): Response
     {
         if(Auth::user()->tipo == "Administrador") {
-            return redirect()->intended(RouteServiceProvider::HOME);
+            // return redirect()->intended(RouteServiceProvider::HOME);
         }
-        
+
         return $next($request);
     }
 }

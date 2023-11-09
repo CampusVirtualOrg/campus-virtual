@@ -17,12 +17,42 @@ import Header from '@/Components/Header.vue';
 
         <section>
             <Header />
+
             <div class="content">
-                <!-- Passar atributos dos componentes -->
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card
+                    title="Cursos"
+                    description="Veja todos os cursos"
+                    route=""
+                    icon="bi bi-c-square-fill"
+                />
+
+                <Card
+                    title="Turmas"
+                    description="Veja todas as turmas"
+                    route=""
+                    icon="bi bi-book-half"
+                />
+
+                <Card
+                    title="Disciplinas"
+                    description="Veja todas as disciplinas"
+                    route=""
+                    icon="bi bi-file-earmark-text-fill"
+                />
+
+                <Card
+                    title="Alunos"
+                    description="Veja aqui tudo sobre alunos"
+                    route=""
+                    icon="bi bi-people-fill"
+                />
+
+                <Card
+                    title="Requerimentos"
+                    description="Veja os requerimentos"
+                    route=""
+                    icon="bi bi-file-earmark-text-fill"
+                />
             </div>
         </section>
     </main>

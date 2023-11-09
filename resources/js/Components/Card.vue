@@ -1,13 +1,26 @@
+<script setup>
+import { Link } from '@inertiajs/vue3';
+import { defineProps } from 'vue';
+
+
+const props = defineProps({
+    title: String,
+    description: String,
+    route: String,
+    icon: String,
+});
+</script>
+
 <template>
-    <a class="card" href="#">
-          <div class="head">
-            <i class="bi bi-file-earmark-text-fill"></i>
-            <span class="card-title">Requerimentos</span>
-          </div>
-          <div class="texts">
-            <p>Veja os requerimentos</p>
-          </div>
-        </a>
+    <Link class="card" :href="route">
+        <div class="head">
+        <i :class="icon"></i>
+        <span class="card-title">{{ title }}</span>
+        </div>
+        <div class="texts">
+        <p>{{ description }}</p>
+        </div>
+    </Link>
 </template>
 
 <style scoped>
