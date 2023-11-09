@@ -10,7 +10,7 @@ import Logo from '@/Components/Logo.vue';
             <h3 class="h3-asclasse">Campus Virtual</h3>
         </Link>
         <div class="anchors">
-            <Link :href="route('alunos')"  class="a-asclasse"><i class="bi bi-people-fill"></i>Alunos</Link>
+            <Link :href="route('usuarios')"  class="a-asclasse"><i class="bi bi-people-fill"></i>Alunos</Link>
 
             <Link :href="route('requerimentos')"  class="a-asclasse" ><i class="bi bi-file-earmark-text-fill"></i>Requerimentos</Link>
 

@@ -4,6 +4,8 @@ import Aside from '@/Components/Aside.vue';
 import Card from '@/Components/Card.vue';
 import Header from '@/Components/Header.vue';
 
+defineProps({ user: Object })
+
 </script>
 
 
@@ -53,6 +55,7 @@ import Header from '@/Components/Header.vue';
                     route=""
                     icon="bi bi-file-earmark-text-fill"
                 />
+                <p>{{ user }}</p>
             </div>
         </section>
     </main>
