@@ -29,7 +29,7 @@ const submit = () => {
 <template>
     <GuestLayout>
 
-        <Head title="Register" />
+        <Head title="Enviar Requerimento" />
         <form @submit.prevent="submit">
             <div hidden>
                 <TextInput id="usuario_id" type="number" class="mt-1 block w-full" v-model="form.usuario_id" required
