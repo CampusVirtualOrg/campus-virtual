@@ -104,7 +104,7 @@
 i {
   padding: 5px;
   font-size: 25px;
-  color: #000;
+  color: #3065ac;
   cursor: pointer;
   margin-right: 10vh;
 }

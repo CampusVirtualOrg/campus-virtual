@@ -3,32 +3,33 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-     <div class="header-section">
+  <div class="header-section">
 
-        <div class="perfil">
-            <img src="assets/users/caio.png" alt="" class="img-perfil  mx-2" />
-            <p>Olá,<span style="color: #3065ac; font-weight: 500;" class="mx-3">Nome</span></p>
-        </div>
-
-        <div class="box">
-        <form name="search">
-            <input type="text" class="input" name="txt" />
-            <i class="bi bi-search"></i>
-        </form>
-        </div>
-
-        <div class="buttons">
-            <i class="bi bi-bell-fill"></i>
-            <i class="bi bi-caret-down-square-fill"></i>
-            <Link :href="route('logout')" method="post" as="button">
-              <i class="bi bi-door-open-fill"></i></Link>
-        </div>
+    <div class="perfil">
+      <span style="color: #3065ac; font-weight: 700; font-size: 16pt;" class="mx-3">Painel Administrativo</span>
     </div>
+
+    <div class="box">
+      <form name="search">
+        <input type="text" class="input" name="txt" />
+        <i class="bi bi-search"></i>
+      </form>
+    </div>
+
+    <div class="buttons">
+      <i class="bi bi-bell-fill"></i>
+      <i class="bi bi-caret-down-square-fill"></i>
+      <Link :href="route('logout')" method="post" as="button">
+      <i class="bi bi-door-open-fill"></i>
+      </Link>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
 .header-section {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,5 +105,4 @@ import { Link } from '@inertiajs/vue3';
   font-size: 18pt;
   color: #3065ac;
 }
-
 </style>

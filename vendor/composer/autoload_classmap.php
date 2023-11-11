@@ -21,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CursosController' => $baseDir . '/app/Http/Controllers/CursosController.php',
     'App\\Http\\Controllers\\DisciplinasController' => $baseDir . '/app/Http/Controllers/DisciplinasController.php',
+    'App\\Http\\Controllers\\LogonController' => $baseDir . '/app/Http/Controllers/LogonController.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
     'App\\Http\\Controllers\\RequerimentosController' => $baseDir . '/app/Http/Controllers/RequerimentosController.php',
     'App\\Http\\Controllers\\TurmaController' => $baseDir . '/app/Http/Controllers/TurmaController.php',

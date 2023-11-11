@@ -1,47 +1,49 @@
 <script setup>
 import HeaderAluno from '@/Components/HeaderAluno.vue';
 import Button from '@/Components/Button.vue';
+
+defineProps({ user: Object })
 </script>
 
 <template>
     <header>
-        <HeaderAluno />
+        <HeaderAluno :nome="user.name"/>
     </header>
 
     <section>
         <Button
             title="Avisos"
-            description="Veja aqui os avisos mais recentes publicados pelos professores."
+            description="Veja os avisos mais recentes publicados pelos professores!"
             route=""
-            icon="bi bi-app-indicator img-section"
+            icon="bi bi-app-indicator"
         />
 
         <Button
             title="Disciplina"
-            description="Aqui estão notas de atividades, trabalhos e etc."
+            description="Veja as disciplinas do seu curso!"
             route=""
-            icon="bi bi-layout-text-window img-section"
+            icon="bi bi-layout-text-window"
         />
 
         <Button
             title="Boletim"
-            description="Notas e faltas do semestre aparecerão aqui."
+            description="Notas e faltas do semestre aparecerão aqui!"
             route=""
-            icon="bi bi-layout-text-window img-section"
+            icon="bi bi-receipt"
         />
 
         <Button
             title="Registro"
-            description="Seus registros estão aqui."
+            description="Seus registros estão aqui!"
             route=""
-            icon="bi bi-layout-text-window img-section"
+            icon="bi bi-check-square"
         />
 
         <Button
             title="Requerimentos"
-            description="Faça seus requerimentos pro bloco administrativo."
-            route=""
-            icon="bi bi-layout-text-window img-section"
+            description="Faça seus requerimentos pro bloco administrativo!"
+            route="requerimento"
+            icon="bi bi-pencil-square"
         />
     </section>
 
@@ -52,8 +54,10 @@ header {
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 120px;
   justify-content: space-between;
+  position: relative;
+  top: 0;
+  margin-top: 1rem;
 }
 
 section {
@@ -61,6 +65,6 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 </style>

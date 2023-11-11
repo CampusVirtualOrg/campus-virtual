@@ -53,7 +53,7 @@ return new class extends Migration
             ]);
             $table->string('observacoes');
             $table->enum('status', ['Aceito', 'Pendente', 'Recusado']);
-            $table->integer('users_id');
+            $table->integer('usuario_id');
         });
     }
 

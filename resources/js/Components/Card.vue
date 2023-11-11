@@ -24,6 +24,10 @@ const props = defineProps({
 </template>
 
 <style scoped>
+* {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  font-family: 'Inter', sans-serif;
+}
 .card {
   display: flex;
   flex-direction: column;
@@ -63,5 +67,10 @@ const props = defineProps({
   font-weight: 500;
   font-size: 14pt;
   color: #252627;
+}
+
+
+.card p {
+  font-size: 12pt;
 }
 </style>

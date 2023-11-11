@@ -554,6 +554,7 @@ class ComposerStaticInit4f88f08fcfec47615c7ab24504d8e43d
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CursosController' => __DIR__ . '/../..' . '/app/Http/Controllers/CursosController.php',
         'App\\Http\\Controllers\\DisciplinasController' => __DIR__ . '/../..' . '/app/Http/Controllers/DisciplinasController.php',
+        'App\\Http\\Controllers\\LogonController' => __DIR__ . '/../..' . '/app/Http/Controllers/LogonController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
         'App\\Http\\Controllers\\RequerimentosController' => __DIR__ . '/../..' . '/app/Http/Controllers/RequerimentosController.php',
         'App\\Http\\Controllers\\TurmaController' => __DIR__ . '/../..' . '/app/Http/Controllers/TurmaController.php',

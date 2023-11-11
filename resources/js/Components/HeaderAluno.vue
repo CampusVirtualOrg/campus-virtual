@@ -1,14 +1,23 @@
 <script setup>
 import Notificações from '@/Components/Notificacoes.vue';
 import { Link } from '@inertiajs/vue3';
+
+const props = defineProps({
+    nome: String,
+    imagem: String
+})
 </script>
 
 <template>
     <div class="header-left">
-        <img src="/assets/users/caio.png" alt='Imagem do perfil' class='img-perfil' />
-        <div class="ml-5">
-            <p>Olá, <span class='user_name'>Caio</span></p>
-        </div>
+      <div class="perfil" v-if="imagem">
+        <img :src="imagem" alt="" class="img-perfil mx-2" />
+        <p class="text-slate-700">Olá, <span style="color: #3065ac; font-weight: 600;">{{ nome }}!</span></p>
+      </div>
+      <div class="perfil" v-else>
+        <img src="../../../public/assets/img/perfil-default.png" alt="" class="img-perfil mx-2" />
+        <p class="text-slate-700">Olá, <span style="color: #3065ac; font-weight: 600;">{{ nome }}!</span></p>
+      </div>
     </div>
 
 
@@ -19,20 +28,34 @@ import { Link } from '@inertiajs/vue3';
         <i class="bi bi-search"></i>
     </div>
 
-    <Notificações />
-
-    <!-- <Link :href="route('login')">
-        <i class="bi bi-box-arrow-left fs-1"></i>
-    </Link> -->
-    <div class="select-wrapper"></div>
+    
+    <div class="options">
+      <Link :href="route('logout')" method="post" as="button">
+        <i class="bi bi-door-open-fill"></i>
+      </Link>
+      <Notificações />
+      <div class="select-wrapper"></div>
+    </div>
 
 </template>
 
 <style scoped>
+* {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  font-family: 'Inter', sans-serif;
+}
 .header-left {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-left: 5%;
+}
+
+.perfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15pt;
 }
 
 .box {
@@ -120,6 +143,15 @@ i:hover {
   left: 0;
   display: none;
   text-align: center;
+}
+
+.options {
+  display: flex;
+  gap: 1rem;
+}
+
+.options i {
+  color: #3065ac;
 }
 
 </style>

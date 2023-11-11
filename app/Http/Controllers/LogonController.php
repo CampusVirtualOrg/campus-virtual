@@ -16,7 +16,9 @@ class LogonController extends Controller
 
         if (Auth::user()->tipo == "Administrador") {
             return Inertia::render('DashboardAdmin', ['user' => $user]);
-        } else if (Auth::user()->tipo == "Professor") {
+        } 
+        
+        if(Auth::user()->tipo == "Professor") {
             return Inertia::render('DashboardProf', ['user' => $user]);
         }
 

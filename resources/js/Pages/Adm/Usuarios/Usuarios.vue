@@ -4,7 +4,7 @@ import Aside from '@/Components/Aside.vue';
 import Card from '@/Components/Card.vue';
 import Header from '@/Components/Header.vue';
 
-defineProps({ user: Object })
+const props = defineProps({ user: Object })
 
 </script>
 
@@ -26,10 +26,9 @@ defineProps({ user: Object })
                 <Card title="Disciplinas" description="Veja todas as disciplinas" route=""
                     icon="bi bi-file-earmark-text-fill" />
 
-                <Card title="Usuarios" description="Veja aqui tudo sobre alunos" route="usuarios"
-                    icon="bi bi-people-fill" />
+                <Card title="Alunos" description="Veja aqui tudo sobre alunos" route="" icon="bi bi-people-fill" />
 
-                <Card title="Requerimentos" description="Veja os requerimentos" route="dashboardRequerimentos"
+                <Card title="Requerimentos" description="Veja os requerimentos" route=""
                     icon="bi bi-file-earmark-text-fill" />
             </div>
         </section>

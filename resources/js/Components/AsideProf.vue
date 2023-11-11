@@ -1,24 +1,37 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import Logo from '@/Components/Logo.vue';
+
+const props = defineProps({
+    nome: String,
+    imagem: String
+})
 </script>
 
 <template>
     <aside>
-        <Link :href="route('welcome')" class="header-asclasse">
-            <h2 class="h2-asclasse">Painel professores</h2>
-            <h3 class="h3-asclasse">Campus Virtual</h3>
-        </Link>
+
+        <div class="perfil" v-if="imagem">
+            <img :src="imagem" alt="" class="img-perfil mx-2" />
+            <p class="text-white">Olá, <span style="color: white; font-weight: 600;">{{ nome }}</span></p>
+        </div>
+        <div class="perfil" v-else>
+            <img src="../../../public/assets/img/perfil-default.png" alt="" class="img-perfil mx-2" />
+            <p class="text-white">Olá, <span style="color: white; font-weight: 600;">{{ nome }}</span></p>
+        </div>
+
+
         <div class="anchors">
-            <Link :href="route('alunos')"  class="a-asclasse"><i class="bi bi-people-fill"></i>Alunos</Link>
+            <Link :href="route('usuarios')" class="a-asclasse"><i class="bi bi-people-fill"></i>Alunos</Link>
 
-            <Link :href="route('requerimentos')"  class="a-asclasse" ><i class="bi bi-file-earmark-text-fill"></i>Requerimentos</Link>
+            <Link :href="route('requerimentos')" class="a-asclasse"><i
+                class="bi bi-file-earmark-text-fill"></i>Requerimentos</Link>
 
-            <Link :href="route('turmas')"  class="a-asclasse"><i class="bi bi-easel2-fill"></i>Turmas</Link>
+            <Link :href="route('turmas')" class="a-asclasse"><i class="bi bi-easel2-fill"></i>Turmas</Link>
 
-            <Link :href="route('disciplinas')"  class="a-asclasse"><i class="bi bi-book-half"></i>Disciplinas</Link>
+            <Link :href="route('disciplinas')" class="a-asclasse"><i class="bi bi-book-half"></i>Disciplinas</Link>
 
-            <Link :href="route('cursos')"  class="a-asclasse" ><i class="bi bi-c-square-fill"></i>Cursos</Link>
+            <Link :href="route('cursos')" class="a-asclasse"><i class="bi bi-c-square-fill"></i>Cursos</Link>
 
             <Link :href="route('welcome')" class="logoAsclasse">
                 <Logo />
@@ -46,6 +59,19 @@ aside {
     text-decoration: none;
     line-height: 1;
     color: var(--white);
+}
+
+.perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15pt;
+}
+
+.perfil img {
+    width: 3rem;
+    border-radius: 50%;
+    background-color: #3065ac;
 }
 
 .h2-asclasse {
@@ -81,5 +107,10 @@ aside {
     padding-left: 1rem;
     border-radius: 0 2rem 2rem 0;
     transition: 0.3s;
+}
+
+.logoAsclasse {
+    width: 30%;
+    margin-top: 20%;
 }
 </style>
