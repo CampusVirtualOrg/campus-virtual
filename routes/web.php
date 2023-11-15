@@ -11,7 +11,7 @@ use App\Http\Controllers\CursosController;
 use App\Http\Controllers\DisciplinasController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\TurmaController;
-use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
