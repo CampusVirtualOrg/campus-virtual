@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\Turma;
 use App\Models\Usuario;
 use App\Models\Aluno_turma;
+use App\Models\User;
 use App\Models\Usuario_turmas;
+use Inertia\Inertia;
 use PhpParser\Node\Expr\Cast\String_;
 
 use function Psy\debug;
@@ -17,12 +19,9 @@ class TurmaController extends Controller
 {
     public function showAll()
     {
-
         $turmas = Turma::all();
-        // $usersIds = Usuario_turmas::where('turma_id', $id)->pluck('aluno_id')->all();
-        //     $alunos = Usuario::whereIn('id', $usersIds)->select('nome')->get();
-        $professores = Usuario::all();
-        return view('adm.turmas.turmas', ['turmas' => $turmas, 'professores' => $professores]);
+        $professores = User::where('tipo', 'Professor')->get();
+        return Inertia::render('DashboardTurmas', ['turmas' => $turmas, 'professores' => $professores]);
     }
 
     public function addDisc(string $id)
@@ -33,6 +32,7 @@ class TurmaController extends Controller
         return view('adm.turmas.createTurmasDisc', ['disciplinas' => $disciplinas , 'turmas_id' => $id]);
 
     }
+
     public function addDiscCreate(Request $request)
     {
         $credentials = $request->only('disciplina_id','turmas_id');
@@ -75,14 +75,13 @@ class TurmaController extends Controller
         ->whereIn('id', $ids)
         ->get();
 
-            $usersIds = Usuario_turmas::where('turma_id', $id)->pluck('aluno_id')->all();
-            $alunos = Usuario::whereIn('id', $usersIds)->select('nome')->get();
+        $usersIds = Usuario_turmas::where('turma_id', $id)->pluck('aluno_id')->all();
+        $alunos = User::whereIn('id', $usersIds)->select('nome')->get();
 
         return view('adm.turmas.turmaone', ['disciplinas' => $turmas, 'alunos' => $alunos]);
 
 
        } catch (\Throwable $th) {
-        //throw $th;
         echo 'erro';
        }
     }

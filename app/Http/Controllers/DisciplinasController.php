@@ -5,16 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Disciplina;
+use Inertia\Inertia;
 
 class DisciplinasController extends Controller
 {
-    public function showAll(){
+    public function showAll()
+    {
         $subject = Disciplina::all();
-        return view('adm.disciplinas.disciplinas', ['disc' => $subject]);
-    }
-
-    public function createIndex(){
-        return view('adm.disciplinas.createDisciplina');
+        return Inertia::render('DashboardDisciplinas', ['disciplinas' => $subject]);
     }
 
     public function create(Request $request){
@@ -33,6 +31,7 @@ class DisciplinasController extends Controller
                 ],
                 301);
             }
+
             //MODELO RECEBE OS DADOS PARA SEREM
             $subject = new Disciplina([
                 'nome' => $credentials['nome'],

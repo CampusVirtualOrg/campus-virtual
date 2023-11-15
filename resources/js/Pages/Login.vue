@@ -10,16 +10,16 @@ import { Head, Link } from '@inertiajs/vue3';
             </a>
         </div>
 
-        <div class="login-form">
+        <div class="login-gon">
             <div class="login-box">
                 <div class="form-group">
                     <input type="text" class="form-matricula" name="matricula" placeholder=" Matrícula ">
                     <input type="password" class="form-senha" name="senha" placeholder=" Senha ">
                     <a href="" class="esqueceu-senha"> Esqueceu sua senha? </a>
                 </div>
-                <a href="/admin">
+                <Link :href="Logon">
                     <button type="submit" id="entrar-button"> Entrar </button>
-                </a>
+                </Link>
             </div>
         </div>
 
@@ -83,7 +83,7 @@ import { Head, Link } from '@inertiajs/vue3';
     outline: none;
     border: 1px solid var(--light-gray);
     border-radius: 10px;
-    
+
     font-size: 18px;
     font-weight: 300;
     text-align: center;

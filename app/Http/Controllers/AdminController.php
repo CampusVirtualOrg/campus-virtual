@@ -3,45 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Users;
+use Illuminate\Foundation\Auth\User as AuthUser;
+use Inertia\Inertia;
 
 class AdminController extends Controller
 {
-
-    /**
-     * BUSCA TODOS OS ALUNOS
-     */
-
-    public function showAll()
+    public function home()
     {
-        $users = Users::where('tipo', 'Aluno');
-        return redirect('/admin/alunos')->with(['usuario' => $users]);
+        return Inertia::render('DashboardAdmin');
     }
 
-    //BUSCA UM User
+    public function users()
+    {
+        $users = User::where('tipo', 'Aluno');
+        return Inertia::render('Adm/Usuarios/Usuarios', ['users' => $users]);
+    }
+
     public function showOne(string $id)
     {
-        $User = Usuario::all()->where('id', $id)->first();
-        return response()->json([
-            'msg' => 'sucess',
-            'data' => $User,
-        ], 200);
+        $User = User::all()->where('id', $id)->first();
+        return Inertia::render('', ['']);
     }
 
-    /*
-    * RETORNA A VIEW DE CADASTRO DE ALUNO
-    */
-    public function index()
-    {
-        return view('adm.users.registroAluno');
-    }
-
-
-    /**
-     * CRIA User
-     */
-    public function create(Request $request)
+    public function register(Request $request)
     {
         try {
             $credentials = $request->only('nome', 'email', 'senha', 'tipo', 'matricula', 'telefone', 'cpf', 'sexo', 'endereco', 'imagem', 'data_nasc'); //DADOS DO User A SER CRIADO
@@ -56,27 +43,17 @@ class AdminController extends Controller
                 $credentials['sexo'] == null ||
                 $credentials['data_nasc'] == null
             )) {
-                return response()->json(
-                    [
-                        'success' => false,
-                        'msg' => 'dados incompletos!',
-                    ],
-                    301
-                );
+                echo "Dados Incompletos";
             }
 
-
             //VERIFICA SE CONTA DE EMAIL JA ESTA CADASTRADO
-            $res =  Usuario::all()->where('email', $credentials['email'])->first();
+            $res =  User::all()->where('email', $credentials['email'])->first();
             if ($res) {
-                return response([
-                    'success' => false,
-                    'msg' => 'email ja cadastrado!',
-                ], 301);
+                echo 'Email ja cadastrado!';
             }
 
             //MODELO RECEBE OS DADOS PARA SEREM SALVOS
-            $User = new Usuario([
+            $User = new User([
                 'nome' => $credentials['nome'],
                 'email' => $credentials['email'],
                 'senha' => $credentials['senha'],
@@ -90,11 +67,10 @@ class AdminController extends Controller
                 'data_nasc' => $credentials['data_nasc'],
             ]);
 
-            $User->save(); //SALVA User
-            //RETORNA A RESPOSTA
-            return redirect('/users');
+            $User->save();
+
         } catch (\Throwable $th) {
-            return response("erro no cadastro de User" . $th->getMessage(), 302);
+            echo "erro no cadastro de User" . $th->getMessage();
         }
     }
 

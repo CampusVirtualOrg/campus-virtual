@@ -18,9 +18,9 @@ class Adm
     public function handle(Request $request, Closure $next): Response
     {
         if(Auth::user()->tipo == "Administrador") {
-            return redirect()->intended(RouteServiceProvider::DASHBOARD_ADM);
+            // return redirect()->intended(RouteServiceProvider::DASHBOARD_ADM);
+            return $next($request);
         }
 
-        return $next($request);
     }
 }

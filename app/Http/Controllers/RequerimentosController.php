@@ -11,10 +11,10 @@ use Inertia\Inertia;
 class RequerimentosController extends Controller
 {
     public function showAll()
-    {      
-        // $requerimentos = Requerimento::all();
-        // $user = Auth::user();
-        // return Inertia::render('Welcome', ['user' => $user, 'requerimentos' => $requerimentos]);
+    {
+        $requerimentos = Requerimento::all();
+        $user = Auth::user();
+        return Inertia::render('Adm/Requerimentos/Requerimentos', ['user' => $user, 'requerimentos' => $requerimentos]);
     }
 
     public function createIndex()

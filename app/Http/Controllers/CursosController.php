@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Curso;
 use App\Models\Disciplina;
 use App\Models\Curso_disciplina;
+use Inertia\Inertia;
 
 class CursosController extends Controller
 {
     public function showAll()
     {
         $course = Curso::all();
-        return view('adm.cursos.cursos', ['course' => $course]);
-
+        return Inertia::render('DashboardCursos', ['course' => $course]);
     }
 
     public function disciplinas(String $courseId)

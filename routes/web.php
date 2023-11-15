@@ -3,13 +3,19 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LogonController;
 use App\Http\Controllers\RequerimentosController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccessibleController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Api\AlunoController;
+use App\Http\Controllers\CursosController;
+use App\Http\Controllers\DisciplinasController;
+use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\TurmaController;
 use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
-| ARQUIVO DE ROTAS WEB
+| WEB ROUTES
 |--------------------------------------------------------------------------
 */
 
@@ -17,6 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/', [AccessibleController::class, 'index'])->name('welcome');
+    Route::get('/logon', [LogonController::class, 'create']);
 
     // CRIAÇÃO DE REQUERIMENTOS
 
@@ -24,76 +32,43 @@ Route::middleware('auth')->group(function () {
     Route::post('/enviarRequerimento', [RequerimentosController::class, 'create'])->name('enviarRequerimento');
 });
 
-require __DIR__ . '/auth.php';
 
+//-------------- ROTAS DO ADMINISTRADOR ---------------//
 
-//---------------- ROTAS MANUAIS  ----------------//
+Route::middleware('administrador')->group(function () {
+    Route::get('/adm', [AdminController::class, 'home'])->name('admin');
+    Route::get('/usuarios', [AdminController::class, 'showAll'])->name('usuarios');
 
-// Landing Page
-
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-})->name('welcome');
-
-Route::get('/logon', [LogonController::class, 'create']);
-
-//--- ROTAS DO ADMINISTRADOR ---//
-
-Route::middleware(['auth', 'administrador'])->group(function () {
-
-    // Home
-    Route::get('/adm', function () {
-        return Inertia::render('DashboardAdmin');
-    })->name('admin');
-
-    // Usuarios
-
-    Route::get('/usuarios', function () {
-        return Inertia::render('Adm/Usuarios/Usuarios');
-    })->name('usuarios');
-
-    // Requerimentos
-
+    // REQUERIMENTOS
 
     Route::controller(RequerimentosController::class)->group(function () {
-        Route::get('/dashboardRequerimentos', 'showAll')->name('dashboardRequerimentos');
+        Route::get('/dashboardRequerimentos', 'create')->name('dashboardRequerimentos');
+        Route::get('/requerimentos', 'showAll');
         Route::post('/requerimentos', 'search');
         Route::get('/requerimentos/edit/{id}', 'updateIndex');
         Route::post('/requerimentos/edit/{id}', 'update');
         Route::get('/requerimentos/remove/{id}', 'remove');
     });
-
-    // Turmas
-
-    Route::get('/turmas', function () {
-        return Inertia::render('DashboardTurmas');
-    })->name('turmas');
-
-    // Disciplinas
-
-    Route::get('/disciplinas', function () {
-        return Inertia::render('DashboardDisciplinas');
-    })->name('disciplinas');
-
-    // Cursos
-
-    Route::get('/cursos', function () {
-        return Inertia::render('DashboardCursos');
-    })->name('cursos');
 });
 
-//--- ROTAS DO ALUNO ---//
-
-Route::middleware(['auth', 'aluno'])->group(function () {
-    Route::get('/aluno', function () {
-        return Inertia::render('DashboardAluno');
-    })->name('homeAluno');
+Route::middleware(['administrador', 'professor'])->group(function (){
+    Route::get('/turmas', [TurmaController::class, 'showAll'])->name('turmas');
+    Route::get('/disciplinas', [DisciplinasController::class, 'showAll'])->name('disciplinas');
+    Route::get('/cursos', [CursosController::class, 'showAll'])->name('cursos');
 });
 
-//--- ROTAS DO PROFESSOR ---//
+
+//------------------ ROTAS DO ALUNO --------------------//
+
+Route::middleware('aluno')->group(function () {
+    Route::get('/aluno', [AlunoController::class, 'index'])->name('homeAluno');
+});
+
+
+//---------------- ROTAS DO PROFESSOR ------------------//
 
 Route::middleware(['auth', 'professor'])->group(function () {
-    Route::get('/professor', function () {
-        return Inertia::render('DashboardProf');
-    })->name('homeProfessor');
+    Route::get('/professor', [ProfessorController::class, 'index'])->name('homeProfessor');
 });
+
+require __DIR__ . '/auth.php';
