@@ -26,7 +26,12 @@ class AlunoController extends Controller
 
     public function boletim()
     {
-        
+
+    }
+
+    public function aviso()
+    {
+        return Inertia::render('AvisoAluno');
     }
 
 }

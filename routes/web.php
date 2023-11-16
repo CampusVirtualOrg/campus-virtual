@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\AlunoController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\DisciplinasController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\TurmaController;
 
@@ -27,7 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/logon', [LogonController::class, 'create']);
-
+    Route::get('/aviso', [PostController::class, 'index'])->name('aviso');
+	Route::get('/aviso/create', [PostController::class, 'create'])->name('create.aviso');
+	Route::get('/aviso/{id}', [PostController::class, 'showOne'])->name('show.one');
+	Route::get('/aviso/editar/{id}', [PostController::class, 'edit'])->name('editar.page');
+	Route::post('/aviso/update/{id}', [PostController::class, 'update'])->name('post.update');
+	Route::get('/aviso/remove/{id}', [PostController::class, 'remove'])->name('post.remover');
+	Route::post('/enviaraviso', [PostController::class, 'store'])->name('store.aviso');
     // CRIAÇÃO DE REQUERIMENTOS
 
     Route::get('/requerimento', [RequerimentosController::class, 'createIndex']);
@@ -75,6 +82,7 @@ Route::middleware(['administrador', 'professor'])->group(function () {
 
 Route::middleware('aluno')->group(function () {
     Route::get('/aluno', [AlunoController::class, 'index'])->name('homeAluno');
+
 });
 
 
