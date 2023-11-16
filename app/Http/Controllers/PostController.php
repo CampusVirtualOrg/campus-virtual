@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class PostController extends Controller
@@ -18,8 +20,11 @@ class PostController extends Controller
     }
 	public function showOne(String $id)
     {
+
+		$comments = Comment::where('post_id',$id)->get();
+
         $post = Post::where('id',$id)->get();
-        return Inertia::render('AvisoAlunoOne' , ['post' => $post]);
+        return Inertia::render('AvisoAlunoOne' , ['post' => $post , 'comments' => $comments]);
     }
 
     /**

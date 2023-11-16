@@ -17,10 +17,14 @@ class Adm
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->tipo == "Administrador") {
+       try {
+		if(Auth::user()->tipo == "Administrador") {
             // return redirect()->intended(RouteServiceProvider::DASHBOARD_ADM);
             return $next($request);
         }
+	   } catch (\Throwable $th) {
+		echo $th->getMessage();
+	   }
 
     }
 }
