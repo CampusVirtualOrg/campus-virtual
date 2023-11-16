@@ -29,7 +29,7 @@ defineProps({ user: Object })
                 <Card title="Usuarios" description="Veja aqui tudo sobre alunos" route="usuarios"
                     icon="bi bi-people-fill" />
 
-                <Card title="Requerimentos" description="Veja os requerimentos" route="dashboardRequerimentos"
+                <Card title="Requerimentos" description="Veja os requerimentos" route="requerimentos"
                     icon="bi bi-file-earmark-text-fill" />
             </div>
         </section>

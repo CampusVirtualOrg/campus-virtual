@@ -24,7 +24,7 @@ const props = defineProps({
         <div class="anchors">
             <Link :href="route('usuarios')" class="a-asclasse"><i class="bi bi-people-fill"></i>Alunos</Link>
 
-            <Link :href="route('dashboardRequerimentos')" class="a-asclasse"><i
+            <Link :href="route('requerimentos')" class="a-asclasse"><i
                 class="bi bi-file-earmark-text-fill"></i>Requerimentos</Link>
 
             <Link :href="route('turmas')" class="a-asclasse"><i class="bi bi-easel2-fill"></i>Turmas</Link>
@@ -48,6 +48,7 @@ aside {
     padding: 1rem;
     background-color: #3065ac;
     height: 100vh;
+    width: 28%;
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
     font-family: 'Inter', sans-serif;
 }

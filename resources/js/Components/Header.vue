@@ -1,5 +1,9 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
+
+// const props = defineProps({
+//     route: String,
+// })
 </script>
 
 <template>
@@ -7,6 +11,10 @@ import { Link } from '@inertiajs/vue3';
 
     <div class="perfil">
       <span style="color: #3065ac; font-weight: 700; font-size: 16pt;" class="mx-3">Painel Administrativo</span>
+    </div>
+
+    <div class="create">
+      <!-- <Link :href="route">Cadastrar Usuario</Link> -->
     </div>
 
     <div class="box">

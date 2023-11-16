@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccessibleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Api\AlunoController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\DisciplinasController;
 use App\Http\Controllers\ProfessorController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\TurmaController;
 | WEB ROUTES
 |--------------------------------------------------------------------------
 */
+
 Route::get('/', [AccessibleController::class, 'index'])->name('welcome');
 
 Route::middleware('auth')->group(function () {
@@ -37,13 +39,24 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('administrador')->group(function () {
     Route::get('/adm', [AdminController::class, 'home'])->name('admin');
-    Route::get('/usuarios', [AdminController::class, 'showAll'])->name('usuarios');
+
+    // USUARIOS
+
+    Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('/register', [RegisteredUserController::class, 'store']);
+
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/usuarios', 'users')->name('usuarios');
+        Route::get('/usuarios/edit/{id}', 'indexUpdate');
+        Route::post('/usuarios/edit/{id}', 'edit');
+        Route::get('/usuarios/remove/{id}', 'remove');
+    });
 
     // REQUERIMENTOS
 
     Route::controller(RequerimentosController::class)->group(function () {
         Route::get('/dashboardRequerimentos', 'create')->name('dashboardRequerimentos');
-        Route::get('/requerimentos', 'showAll');
+        Route::get('/requerimentos', 'showAll')->name("requerimentos");
         Route::post('/requerimentos', 'search');
         Route::get('/requerimentos/edit/{id}', 'updateIndex');
         Route::post('/requerimentos/edit/{id}', 'update');
@@ -51,7 +64,7 @@ Route::middleware('administrador')->group(function () {
     });
 });
 
-Route::middleware(['administrador', 'professor'])->group(function (){
+Route::middleware(['administrador', 'professor'])->group(function () {
     Route::get('/turmas', [TurmaController::class, 'showAll'])->name('turmas');
     Route::get('/disciplinas', [DisciplinasController::class, 'showAll'])->name('disciplinas');
     Route::get('/cursos', [CursosController::class, 'showAll'])->name('cursos');

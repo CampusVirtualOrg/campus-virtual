@@ -1,10 +1,10 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import Aside from '@/Components/Aside.vue';
 import Card from '@/Components/Card.vue';
 import Header from '@/Components/Header.vue';
 
-const props = defineProps({ user: Object })
+defineProps({ user: Object, users: Object })
 
 </script>
 
@@ -16,20 +16,38 @@ const props = defineProps({ user: Object })
         <Aside :nome="user.name" />
 
         <section>
-            <Header />
-
+            <Header/>
             <div class="content">
-                <Card title="Cursos" description="Veja todos os cursos" route="" icon="bi bi-c-square-fill" />
-
-                <Card title="Turmas" description="Veja todas as turmas" route="" icon="bi bi-book-half" />
-
-                <Card title="Disciplinas" description="Veja todas as disciplinas" route=""
-                    icon="bi bi-file-earmark-text-fill" />
-
-                <Card title="Alunos" description="Veja aqui tudo sobre alunos" route="" icon="bi bi-people-fill" />
-
-                <Card title="Requerimentos" description="Veja os requerimentos" route=""
-                    icon="bi bi-file-earmark-text-fill" />
+                <div class="myTable">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Tipo</th>
+                                <!-- <th>Matricula</th> -->
+                                <th>Telefone</th>
+                                <th>CPF</th>
+                                <th>Sexo</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody v-for="usuario in users">
+                            <tr>
+                                <td>{{ usuario.name }}</td>
+                                <td>{{ usuario.email }}</td>
+                                <td>{{ usuario.tipo }}</td>
+                                <!-- <td>{{ usuario.matricula }}</td> -->
+                                <td>{{ usuario.telefone }}</td>
+                                <td>{{ usuario.cpf }}</td>
+                                <td>{{ usuario.sexo }}</td>
+                                <td>{{ usuario.data_nasc }}</td>
+                                <td><a href="/requerimentos/edit/{id}">E</a><a href="/requerimentos/remove/{id}">D</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>
@@ -54,6 +72,7 @@ section {
     display: flex;
     gap: 2rem;
     flex-direction: column;
+    width: 100%;
 }
 
 .buttonbox {
@@ -65,5 +84,27 @@ section {
     color: #F7F2FA;
     border-radius: 25px;
     font-size: larger;
+}
+
+
+table {
+    width: 75vw;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+tr,
+td,
+th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 0.4rem;
+}
+
+th {
+    padding: 0.6rem;
+    background-color: #3065ac;
+    color: #ffffff;
+    font-size: 14pt;
 }
 </style>

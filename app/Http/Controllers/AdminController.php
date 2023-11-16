@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\Foundation\Auth\User as AuthUser;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class AdminController extends Controller
@@ -18,8 +19,9 @@ class AdminController extends Controller
 
     public function users()
     {
-        $users = User::where('tipo', 'Aluno');
-        return Inertia::render('Adm/Usuarios/Usuarios', ['users' => $users]);
+        $users = User::all();
+        $user = Auth::user();
+        return Inertia::render('Adm/Usuarios/Usuarios', ['users' => $users, 'user' => $user]);
     }
 
     public function showOne(string $id)
@@ -76,7 +78,7 @@ class AdminController extends Controller
 
     public function indexUpdate(String $id){
 
-        $User = Usuario::all()->where('id', $id)->first();
+        $User = User::all()->where('id', $id)->first();
         return view('adm.users.editar', ['user' => $User]);
 
     }
@@ -86,7 +88,7 @@ class AdminController extends Controller
     {
         try {
             $credentials = $request->only('nome', 'email', 'senha', 'tipo', 'matricula', 'telefone', 'cpf', 'sexo', 'endereco', 'data_nasc');
-            if (Usuario::where('email', $request->email)->exists()) {
+            if (User::where('email', $request->email)->exists()) {
                 $aluno = [
                     'nome' => $request->nome,
                     'email' => $request->email,
@@ -99,7 +101,7 @@ class AdminController extends Controller
                     'data_nasc' => $request->data_nasc
                 ];
 
-                Usuario::where('email', $credentials['email'])->update($aluno);
+                User::where('email', $credentials['email'])->update($aluno);
                 return redirect('/users');
             } else {
                 return response()->json([
@@ -118,7 +120,7 @@ class AdminController extends Controller
     public function remove(string $id)
     {
         //VERIFICA SE ID EXISTE
-        $User = Usuario::all()->where('id', $id)->first();
+        $User = User::all()->where('id', $id)->first();
         if (!$User) {
             return response([
                 'msg' => 'User nao removido',
@@ -131,7 +133,7 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {
-        $users = Usuario::where('nome', 'LIKE', '%' . $request->text . '%')
+        $users = User::where('nome', 'LIKE', '%' . $request->text . '%')
         ->orWhere('email', 'LIKE', '%' . $request->text . '%')
         ->orWhere('matricula', 'LIKE', '%' . $request->text . '%')
         ->orWhere('telefone', 'LIKE', '%' . $request->text . '%')
@@ -140,7 +142,7 @@ class AdminController extends Controller
     }
 
     public function searchNome(){
-        $users = Usuario::orderBy('nome', 'DESC');
+        $users = User::orderBy('nome', 'DESC');
         return view('adm.users.alunos', ['users' => $users]);
     }
 }
