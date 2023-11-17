@@ -1,79 +1,133 @@
 <script setup>
 
+import HeaderAluno from "@/Components/HeaderAluno.vue";
+defineProps({ post: Object, user: Object });
 
-defineProps({ post: Object });
 </script>
 
 <template>
   <header>
-    <a href="/aviso/create/view">CRIAR POSTAGEM</a>
+    <HeaderAluno :nome="user.name" />
   </header>
-  <section v-if="this.post">
-    <div class="container-post" v-for="(item, i) in post" :key="i">
-    <div class="imagen">
-		<a :href="'aviso'+'/'+item['id']"><img :src="'assets/img/' + item['url']" alt="img" /></a>
-	</div>
-     <div class="text">
-		<button hidden>{{item['id']}}</button>
-		<h1>{{ item["titulo"] }}</h1>
-		<h2>{{ item["subtitulo"] }}</h2>
-		<p>{{ item["descr"] }}</p>
+  <section>
+    <div class="section-left">
+      <a href="/aviso/create/view" class="buttonCriar"><span style="font-size: 24pt;">+</span>CRIAR POSTAGEM</a>
+    </div>
+    <div class="section-rigth">
 
-	 </div>
+      <a :href="'aviso' + '/' + item['id']" class="container-post" v-for="(item, i) in post" :key="i">
+        <div class="text">
+          <button hidden>{{ item['id'] }}</button>
+          <h1>{{ item["titulo"] }}</h1>
+          <h2>{{ item["subtitulo"] }}</h2>
+
+          <div class="imagem" v-if="item.img != ''">
+            <img :src="'assets/img/' + item['url']" alt="img" />
+          </div>
+
+          <p>{{ item["descr"] }}</p>
+        </div>
+      </a>
     </div>
   </section>
 </template>
 
 <style scoped>
+header {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-between;
+  position: relative;
+  top: 0;
+  margin-top: 1rem;
+}
 
 section {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  font-family: 'Inter', sans-serif;
+  display: grid;
+  grid-template-columns: 20% 70%;
   align-items: center;
-  justify-content: space-evenly;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin: 1rem 4.5rem;
   height: 100%;
-  width: 100vw;
-background-color: white;
-  gap: 30px;
-
 }
 
-.imagen{
-
-	height: 300px;
-	width: 300px;
-
-
+.section-left {
+  align-self: start;
+  display: flex;
+  align-items: start;
+  justify-content: start;
 }
-h1{
-	font-size: 32px;
-	font-weight: 800;
 
-
+.buttonCriar {
+  background-color: #3065ac;
+  padding: 0.4rem 2rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  border-radius: 50px;
 }
-h2{
-	font-size: 24px;
-	font-weight: 200;
 
+.section-left a {
+  width: 15rem;
 }
-p{
-	font-size: 16px;
 
-}
-.text{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.section-rigth {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 
 .container-post {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-gap: 10px;
-  width: 400px;
+  align-items: start;
+  width: 80%;
+  height: auto;
+  background-color: #fff;
+  border: 2px solid #dfdfdf;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+}
+
+.imagem img {
+  max-width: 40%;
+  max-height: 100%;
+  margin: 1rem 0rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: start;
+}
+
+.text h1 {
+  font-size: 18pt;
+  font-weight: 800;
+  color: #3065ac;
+}
+
+.text h2 {
+  font-size: 14pt;
+  font-weight: 500;
+  color: #252627;
+}
+
+.text p {
+  font-size: 12pt;
+  font-weight: 400;
+  color: 252627;
 }
 </style>

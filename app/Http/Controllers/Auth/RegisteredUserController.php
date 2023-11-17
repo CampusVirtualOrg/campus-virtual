@@ -52,6 +52,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect('/login');
+        return redirect('/adm');
     }
 }

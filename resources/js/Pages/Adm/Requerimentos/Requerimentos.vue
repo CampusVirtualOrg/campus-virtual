@@ -35,7 +35,7 @@ const props = defineProps({
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody  v-for="requerimento in requerimentos">
+                        <tbody v-for="requerimento in requerimentos" :key="requerimento.id">
                             <tr>
                                 <td>{{ requerimento.nome_usuario }}</td>
                                 <td>{{ requerimento.email_usuario }}</td>
@@ -44,7 +44,10 @@ const props = defineProps({
                                 <td>{{ requerimento.observacoes }}</td>
                                 <td>{{ requerimento.status }}</td>
                                 <!-- <td>{{ requerimento.created_at }}</td> -->
-                                <td><a href="/requerimentos/edit/{id}">E</a><a href="/requerimentos/remove/{id}">D</a></td>
+                                <td>
+                                    <Link :href="`/requerimentos/edit/${requerimento.id}`">EDIT</Link>
+                                    <Link :href="`/requerimentos/remove/${requerimento.id}`">DEL</Link>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -89,24 +92,24 @@ section {
 
 
 table {
-  width: 75vw;
-  border: 1px solid #000;
-  border-collapse: collapse;
+    width: 75vw;
+    border: 1px solid #000;
+    border-collapse: collapse;
 }
 
 tr,
 td,
 th {
-  border: 1px solid black;
-  text-align: center;
-  padding: 0.4rem;
+    border: 1px solid black;
+    text-align: center;
+    padding: 0.4rem;
+    background-color: #ffffff;
 }
 
 th {
-  padding: 0.6rem;
-  background-color: #3065ac;
-  color: #ffffff;
-  font-size: 14pt;
+    padding: 0.6rem;
+    background-color: #3065ac;
+    color: #ffffff;
+    font-size: 14pt;
 }
-
 </style>

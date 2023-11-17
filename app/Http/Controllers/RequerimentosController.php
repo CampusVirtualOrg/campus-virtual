@@ -65,7 +65,7 @@ class RequerimentosController extends Controller
     public function updateIndex(String $id)
     {
         $requerimento = Requerimento::all()->where('id', $id)->first();
-        return view('adm.requerimentos.editRequerimento', ['requerimento' => $requerimento]);
+        return Inertia::render('Adm/Requerimentos/EditRequerimentos', ['requerimento' => $requerimento]);
     }
 
     public function update(Request $request, string $id)

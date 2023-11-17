@@ -16,7 +16,7 @@ defineProps({ user: Object, users: Object })
         <Aside :nome="user.name" />
 
         <section>
-            <Header/>
+            <Header />
             <div class="content">
                 <div class="myTable">
                     <table class="styled-table">
@@ -43,7 +43,10 @@ defineProps({ user: Object, users: Object })
                                 <td>{{ usuario.cpf }}</td>
                                 <td>{{ usuario.sexo }}</td>
                                 <td>{{ usuario.data_nasc }}</td>
-                                <td><a href="/requerimentos/edit/{id}">E</a><a href="/requerimentos/remove/{id}">D</a></td>
+                                <td>
+                                    <Link :href="`/usuarios/edit/${usuario.id}`">EDIT</Link>
+                                    <Link :href="`/usuarios/remove/${usuario.id}`">DEL</Link>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -106,5 +109,4 @@ th {
     background-color: #3065ac;
     color: #ffffff;
     font-size: 14pt;
-}
-</style>
+}</style>

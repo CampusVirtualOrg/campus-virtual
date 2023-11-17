@@ -120,15 +120,15 @@ class AdminController extends Controller
     public function remove(string $id)
     {
         //VERIFICA SE ID EXISTE
-        $User = User::all()->where('id', $id)->first();
-        if (!$User) {
+        $subject = User::all()->where('id', $id)->first();
+        if (!$subject) {
             return response([
-                'msg' => 'User nao removido',
+                'msg' => 'Usuario nao removido',
             ]);
         }
         //REMOVE User
-        $User->delete();
-        return redirect('/users');
+        $subject->delete();
+        return redirect('/usuarios');
     }
 
     public function search(Request $request)
