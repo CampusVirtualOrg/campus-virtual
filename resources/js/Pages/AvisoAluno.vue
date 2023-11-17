@@ -6,9 +6,9 @@ defineProps({ post: Object });
 
 <template>
   <header>
-    <a href="aviso/create">criar aviso</a>
+    <a href="/aviso/create/view">CRIAR POSTAGEM</a>
   </header>
-  <section>
+  <section v-if="this.post">
     <div class="container-post" v-for="(item, i) in post" :key="i">
     <div class="imagen">
 		<a :href="'aviso'+'/'+item['id']"><img :src="'assets/img/' + item['url']" alt="img" /></a>

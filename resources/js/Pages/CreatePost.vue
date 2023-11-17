@@ -1,6 +1,6 @@
 <template>
 	<div>
-	  <form action="/enviaraviso" method="post">
+	  <form action="http://127.0.0.1:8000/aviso/create" method="post">
 		<!-- Inclua o token CSRF -->
 		<input type="hidden" name="_token" :value="csrfToken">
 
@@ -40,7 +40,7 @@
 	},
 	methods: {
 	  handleSubmit() {
-		fetch('aviso/store', {
+		fetch('/dadaaviso/create', {
 		  method: 'POST',
 		  headers: {
 			'Content-Type': 'application/json',

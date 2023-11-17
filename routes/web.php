@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
 	Route::controller(PostController::class)->group(function () {
 		Route::get('/aviso', 'index')->name('aviso.show.all');
 		Route::get('/aviso/{id}', 'showOne')->name('aviso.show.one');
-		Route::get('/aviso/create', 'create')->name('aviso.create.view');
+		Route::get('/aviso/create/view', 'create')->name('aviso.create.view');
 		Route::post('/aviso/create', 'store')->name('aviso.create');
 		Route::get('/aviso/editar/{id}', 'edit')->name('aviso.edit.view');
 		Route::post('/aviso/update/{id}', 'update')->name('aviso.update');
